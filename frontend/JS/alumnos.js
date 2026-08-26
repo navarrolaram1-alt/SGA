@@ -55,8 +55,11 @@ const mensaje = document.querySelector("#mensaje")
 const listaAlumnos = document.querySelector("#listaAlumnos")
 let alumnoEditandoId = null
 let alumnoEditar = null
+const btnCancelar = document.querySelector("#btnCancelar")
+btnCancelar.style.display = "none"
+const btnGuardar = document.querySelector("#btnGuardar")
 
-formulario.addEventListener("submit", function(event) {
+formulario.addEventListener("submit", function (event) { 
     event.preventDefault();
 
     const nombre = document.querySelector("#nombre").value.trim()
@@ -87,51 +90,50 @@ formulario.addEventListener("submit", function(event) {
             carrera: carrera,
             correo: correo
         }
+
         alumnos.push(alumno)
         mostrarMensaje("Alumno guardado correctamente", "mje-exito")
+
     } else {
         const alumno = alumnos.find(alumno => alumno.id === alumnoEditandoId)
         alumno.nombre = nombre
         alumno.carrera = carrera
         alumno.correo = correo
-    
 
-        const datosActuales ={
-            nombre:nombre,
-            carrera:carrera,
-            correo:correo,
+        const datosActuales = { 
+            nombre: nombre,
+            carrera: carrera,
+            correo: correo
         }
-        
-        /*if (datosActuales.nombre === alumnoEditar.nombre &&
-            datosActuales.carrera === alumnoEditar.carrera &&
-            datosActuales.correo === alumnoEditar.correo) {
-              mostrarMensaje("No se realizaron cambios", "mje-error")
+        // if (datosActuales.nombre === alumnoEditar.nombre &&
+        //     datosActuales.carrera === alumnoEditar.carrera &&
+        //     datosActuales.correo === alumnoEditar.correo) {
+        //         mostrarMensaje("No se realizaron cambios", "mje-error")
+        //         return
+        //     }
+        if (JSON.stringify(datosActuales) === JSON.stringify(alumnoEditar)){
+            mostrarMensaje("No se realizaron cambios", "mje-adv")
             return
-        }*/
-       if (JSON.stringify(datosActuales) === JSON.stringify(alumnoEditar)){
-        mostrarMensaje("No se realizaron cambios", "mje-error")
-        return
-       }
-            
-    }
-    
+        }
+
         alumnoEditandoId = null
-        alumnoEditar=null
-        formulario.querySelector("button").textContent = "Guardar Alumno"
+        alumnoEditar = null
+        btnGuardar.textContent = "Guardar Alumno"
 
         mostrarMensaje("Alumno actualizado correctamente", "mje-exito")
+    }
     // localStorage.setItem("alumnos", JSON.stringify(alumnos))
     guardarDatos("alumnos", alumnos)
-    
+
     mostraAlumnos(alumnos)
     formulario.reset()
-)}
-
+});
 
 
 function obtenerAlumnos() {
     return obtenerDatos("alumnos")
 }
+
 
 
 function mostraAlumnos(alumnos) {
@@ -171,7 +173,7 @@ function eliminarAlumno(id) {
     if (alumnoEditandoId === id){
         formulario.reset()
         alumnoEditandoId = null
-        formulario.querySelector("button").textContent = "Guardar alumno"
+        btnGuardar.textContent = "Guardar alumno"
     }
     mostrarMensaje("Alumno eliminado correctamente", "mje-exito")
 }
@@ -198,17 +200,31 @@ function editarAlumno(id) {
     document.querySelector("#nombre").value = alumno.nombre;
     document.querySelector("#carrera").value = alumno.carrera;
     document.querySelector("#correo").value = alumno.correo;
-    
+
     alumnoEditar = {
         nombre: alumno.nombre,
         carrera: alumno.carrera,
-        correo: alumno.correo,
-
+        correo: alumno.correo
     }
+
     alumnoEditandoId = id;
+    btnCancelar.style.display = "inline-block"
     formulario.querySelector("button").textContent = "Actualizar Alumno"
     document.querySelector("#nombre").focus()
 }
 
+
+function cancelarEdicion(){
+    formulario.reset()
+    alumnoEditandoId = null
+    alumnoEditar = null
+    btnGuardar.textContent = "Guardar Alumno"
+    btnCancelar.syle.display = "none"
+    document.querySelector("#nombre").focus() 
+}
+
+btnCancelar.addEventListener("click", cancelarEdicion)
+
 const alumnos = obtenerAlumnos()
 mostraAlumnos(alumnos)  
+

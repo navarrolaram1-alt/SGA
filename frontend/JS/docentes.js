@@ -2,6 +2,11 @@ const formulario = document.querySelector("#formDocente")
 const mensaje = document.querySelector("#mensajeDocente")
 const listaDocentes = document.querySelector("#listaDocentes")
 let docenteEditandoId = null
+let docenteEditar = null
+const btnCancelar = document.querySelector("#btnCancelar")
+btnCancelar.style.display = "none"
+const btnGuardar = document.querySelector("#btnGuardar")
+
 
 formulario.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -46,24 +51,45 @@ formulario.addEventListener("submit", function (event) {
 
         mostrarMensaje("Docente actualizado correctamente", "mje-exito")
     }
-    localStorage.setItem("docentes", JSON.stringify(docentes))
+    // localStorage.setItem("docentes", JSON.stringify(docentes))
+    guardarDatos("docentes", docentes)
     mostraDocentes(docentes)
     formulario.reset()
 });
 
+        const datosActuales = {
+            nombre: nombre,
+            carrera: carrera,
+            correo: correo
+        }
+        // if (datosActuales.nombre === alumnoEditar.nombre &&
+        //     datosActuales.carrera === alumnoEditar.carrera &&
+        //     datosActuales.correo === alumnoEditar.correo) {
+        //         mostrarMensaje("No se realizaron cambios", "mje-error")
+        //         return
+        //     }
+        if (JSON.stringify(datosActuales) === JSON.stringify(docenteEditar)){
+            mostrarMensaje("No se realizaron cambios", "mje-adv")
+            return
+        }
+
+        docenteEditandoId = null
+        docenteEditar = null
+        btnGuardar.textContent = "Guardar Docente"
+
+        mostrarMensaje("Alumno actualizado correctamente", "mje-exito")
+    }
+    // localStorage.setItem("alumnos", JSON.stringify(alumnos))
+    guardarDatos("alumnos", alumnos)
+
+    mostraAlumnos(alumnos)
+    formulario.reset()
+});
 
 function obtenerDocentes() {
-    obtenerDatos("docentes")
+  return obtenerDatos("docentes")
 }
 
-function mostrarMensaje(texto, tipo) {
-    mensaje.textContent = texto;
-    mensaje.className = tipo
-    setTimeout(() => {
-        mensaje.textContent = " ";
-        mensaje.className = "oculto"
-    }, 3000);
-}
 
 function mostraDocentes(docentes) {
     listaDocentes.innerHTML = ""

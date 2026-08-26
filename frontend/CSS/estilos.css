@@ -137,13 +137,15 @@ th {
     z-index: 1000;
 }
 .mje-error {
-    background-color: #fee2e2;
+    background-color: #f03636;
 }
 
 .mje-exito {
     background-color: #16a34a;
 }
-
+.mje-adv {
+    background-color: #faed3b;
+}
 .btn-editar, .btn-eliminar {
     border: none;
     padding: 8px 10px;
@@ -222,4 +224,14 @@ th {
 .tarjeta-deshabilitada:hover {
     transform: none;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+.acciones-form {
+    display:flex;
+    gap:10px;
+}
+.btn-Cancelar{
+    background-color: #eb7171;
+}
+.btn-Cancelar:hover {
+    background-color: #dc2626;
 }
