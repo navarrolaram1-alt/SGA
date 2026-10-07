@@ -14,7 +14,7 @@ function obtenerAlumno(req, res) {
             mensaje: "Alumno no encontrado"
         })
     }
-    res.json(alumno)
+res.json(alumno)                
 }
 
 function crearAlumno(req, res) {

@@ -1,22 +1,29 @@
-import Incrementar from "./components/ejemplos/Incrementar"
-import CambiarTitulo from "./components/ejemplos/CambiarTitulo"
-import { Adivina } from "./components/ejemplos/Adivina"
-import Mensaje from "./components/ejemplos/Mensaje"
-import TamanioTexto from "./components/ejemplos/TamanioTexto"
+import FormularioA from "./components/FormularioA"
+import { useEffect, useState } from "react"
 
 function App()
 {
+const [nombre, setNombre] = useState("")
+
   return (
-    <>
-    <TamanioTexto />
-    <br />
-    <Mensaje />
-    <Incrementar />
-    <br />
-    <CambiarTitulo />
-    <br />
-    <Adivina />
-    </>
+    <FormularioA />
+useEffect(() => {
+  if (nombre){
+    document.title = `Hola ${nombre}`
+  } else {
+    document.title = `Mi aplicación`
+    }
+}, [nombre])
+
+return (
+   <>
+  <input 
+  value = {nombre}
+  onChange={(e) => setNombre(e.target.value)}
+  placeholder="Escribí tu nombre"
+  />
+  <h2>Hola {nombre} </h2>
+   </>
   )
 }
 export default App
