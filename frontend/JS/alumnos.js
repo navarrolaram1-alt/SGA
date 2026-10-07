@@ -166,5 +166,3 @@ function mostrarAlumnos(alumnos) {
         `;
     }
 }
-
-async function eliminarAlumno(
