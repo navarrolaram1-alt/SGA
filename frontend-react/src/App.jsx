@@ -1,28 +1,18 @@
+//import { ListaAlumnos } from "./components/ListaAlumnos"
+import { useState } from "react"
 import FormularioA from "./components/FormularioA"
-import { useEffect, useState } from "react"
 
 function App()
 {
-const [nombre, setNombre] = useState("")
-
-  return (
-    <FormularioA />
-useEffect(() => {
-  if (nombre){
-    document.title = `Hola ${nombre}`
-  } else {
-    document.title = `Mi aplicación`
-    }
-}, [nombre])
+const (actualizar, setActualizar) = useState (0)
+function AlumnoCreado(){
+  setActualizar (valor => valor + 1)
+}
 
 return (
    <>
-  <input 
-  value = {nombre}
-  onChange={(e) => setNombre(e.target.value)}
-  placeholder="Escribí tu nombre"
-  />
-  <h2>Hola {nombre} </h2>
+   <FormularioA />
+ {/* <ListaAlumnos /> */}
    </>
   )
 }
