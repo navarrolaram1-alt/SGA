@@ -1,11 +1,11 @@
 import { useState } from "react";
 const API_ALUMNOS = "http://localhost:3000/alumnos"
 
-function FormularioA( onAlumnoCreado ){
+function FormularioA({ onAlumnoCreado }){
     const [formulario, setFormulario] = useState({
         legajo: "",
         nombre: "",
-        carrrera: "",
+        carrera: "",
         correo: ""
     })
     const [error, setError] = useState("")
@@ -45,7 +45,6 @@ function FormularioA( onAlumnoCreado ){
                 correo: ""
             })
             onAlumnoCreado()
-
         } catch (error) {
             console.error("Error al guardar:", error)
             setError(error.message || "No se pudo conectar con el servidor")
