@@ -6,7 +6,8 @@ const cors = require("cors")
 const conectarDB = require("./config/database")
 const alumnosRoutes = require("./routes/alumnos.routes") 
 const docentesRoutes = require("./routes/docentes.routes")
-const authRoutes = require( "./routes/authRoutes")
+const authRoutes = require( "./routes/authRoutes") 
+const materiasRoutes = require("./routes/materias.routes")
 
 
 const app = express() 
@@ -16,6 +17,7 @@ app.use(cors())
 app.use("/alumnos", alumnosRoutes) 
 app.use("/docentes", docentesRoutes)
 app.use("/auth", authRoutes)
+app.use("/materias", materiasRoutes)
 
 
 const PORT = process.env.PORT 

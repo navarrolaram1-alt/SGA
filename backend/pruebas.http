@@ -58,3 +58,55 @@ Content-Type: application/json
     "email": "admin@sga.com", 
     "password": "ClaveDePrueba123!"
 }
+
+### 1. Consultar todas, colección vacía (200)
+GET http://localhost:3000/materias
+### 2. Registrar PRG1, es también la prueba 5 (201)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "PRG1", "nombre": "Programación I", "descripcion": "Introducción", "cargaHoraria": 96, "estado": "activa" }
+### 2. Registrar PRG3 (201)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "PRG3", "nombre": "Programación III", "cargaHoraria": 64, "estado": "activa" }
+### 2. Registrar BD1 (201)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "BD1", "nombre": "Base de Datos I", "cargaHoraria": 80, "estado": "inactiva" }
+### 3. Consultar PRG1 por código (200)
+GET http://localhost:3000/materias/PRG1
+### 4. Consultar un código inexistente (404)
+GET http://localhost:3000/materias/XXX999
+### 6. Alta sin código (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "nombre": "Sin código", "cargaHoraria": 10, "estado": "activa" }
+### 7. Alta sin nombre (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "X1", "cargaHoraria": 10, "estado": "activa" }
+### 8. Alta sin carga horaria (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "X2", "nombre": "Sin carga", "estado": "activa" }
+### 9. Carga horaria cero (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "X3", "nombre": "Carga cero", "cargaHoraria": 0, "estado": "activa" }
+### 9. Carga horaria negativa (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "X4", "nombre": "Carga negativa", "cargaHoraria": -5, "estado": "activa" }
+### 9. Carga horaria decimal (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "X5", "nombre": "Carga decimal", "cargaHoraria": 4.5, "estado": "activa" }
