@@ -110,3 +110,41 @@ POST http://localhost:3000/materias
 Content-Type: application/json
 
 { "codigo": "X5", "nombre": "Carga decimal", "cargaHoraria": 4.5, "estado": "activa" }
+### 10. Código duplicado (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "PRG1", "nombre": "Otro nombre", "cargaHoraria": 50, "estado": "activa" }
+### 11. Estado no permitido (400)
+POST http://localhost:3000/materias
+Content-Type: application/json
+
+{ "codigo": "X6", "nombre": "Estado inválido", "cargaHoraria": 50, "estado": "pausada" }
+### 12. Modificar nombre y descripción (200)
+PUT http://localhost:3000/materias/PRG1
+Content-Type: application/json
+
+{ "nombre": "Programación 1", "descripcion": "Actualizada", "cargaHoraria": 96, "estado": "activa" }
+### 13. Modificar carga horaria y estado (200)
+PUT http://localhost:3000/materias/PRG1
+Content-Type: application/json
+
+{ "nombre": "Programación 1", "cargaHoraria": 120, "estado": "inactiva" }
+### 14. Modificar una materia inexistente (404)
+PUT http://localhost:3000/materias/NOEXISTE
+Content-Type: application/json
+
+{ "nombre": "Nada", "cargaHoraria": 10, "estado": "activa" }
+### 15. Cambiar el código por el de otra materia (400)
+PUT http://localhost:3000/materias/PRG3
+Content-Type: application/json
+
+{ "codigo": "PRG1", "nombre": "Programación III", "cargaHoraria": 64, "estado": "activa" }
+### 16. Eliminar BD1 (200)
+DELETE http://localhost:3000/materias/BD1
+### 16. Consultar BD1 eliminada (404)
+GET http://localhost:3000/materias/BD1
+### 17. Eliminar una materia inexistente (404)
+DELETE http://localhost:3000/materias/NOEXISTE
+### 18. Estado final del listado (200)
+GET http://localhost:3000/materias
