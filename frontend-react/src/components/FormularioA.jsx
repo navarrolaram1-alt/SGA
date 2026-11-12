@@ -56,7 +56,7 @@ function FormularioA({ onAlumnoCreado, alumnoEditar, onCancelar }){
                 carrera: "",
                 correo: ""
             })
-            onAlumnoCreado()
+            onAlumnoCreado(editando ? "Modificado" : "Creado") 
         } catch (error) {
             console.error("Error al guardar:", error)
             setError(error.message || "No se pudo conectar con el servidor")

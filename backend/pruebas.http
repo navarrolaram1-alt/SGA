@@ -210,3 +210,8 @@ GET http://localhost:3000/materias/BD1
 DELETE http://localhost:3000/materias/NOEXISTE
 ### 18. Estado final del listado (200)
 GET http://localhost:3000/materias
+
+
+
+###
+GET http://localhost:3000/alumnos

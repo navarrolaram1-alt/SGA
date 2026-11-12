@@ -111,7 +111,7 @@ function FormularioMateria({ onMateriaCreado, materiaEditar, onCancelar }){
                     name="codigo"
                     label="Código"
                     value={formulario.codigo}
-                    onChange={manejarCambio}
+                    onChange={manejarCambio}                    
                     required
                     fullWidth
                 />
@@ -131,6 +131,7 @@ function FormularioMateria({ onMateriaCreado, materiaEditar, onCancelar }){
                     type="number"
                     value={formulario.cargaHoraria}
                     onChange={manejarCambio}
+                    
                     required
                     fullWidth
                 />
