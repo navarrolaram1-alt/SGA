@@ -16,7 +16,7 @@ function FormularioMateria({ onMateriaCreado, materiaEditar, onCancelar }){
     function manejarCambio(e) {
         const { name, value} = e.target
 
-        setFormulario({
+        setFormulario({  
             ...formulario,
             [name]: value
         })
