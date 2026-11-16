@@ -1,22 +1,26 @@
-//import Alumnos from "./pages/Alumnos"
-//import {FAQ} from "./pages/FAQ"
-//import {Routes, Route} from "react-router-dom"
-//import LayoutPpal from "./layouts/LayoutPpal"
-//import Inicio from "./pages/Inicio"
-//import Docentes from "./pages/Docentes"
-//import Materias from "./pages/Materias"
+import Alumnos from "./pages/Alumnos"
+import {FAQ} from "./pages/FAQ"
+import {Routes, Route} from "react-router-dom"
+import LayoutPpal from "./layouts/LayoutPpal"
+import Inicio from "./pages/Inicio"
+import Docentes from "./pages/Docentes"
+import Materias from "./pages/Materias"
 import Login from "./pages/Login"
+import RutaProtegida from "./components/ejemplos/RutaProtegida"
+
 function App()
 {
 
 return (
 <Login />
 )
-//function App()
-//{
+function App()
+{
 
-/*return (
+return (
    <Routes>
+    <Route path= "/login" element={<Login/>}/>
+    <Route element={<RutaProtegida/>}>
     <Route path="/" element={<LayoutPpal />}>
     <Route index element={<Inicio />} />
     <Route path="alumnos" element={<Alumnos />} />
@@ -24,7 +28,8 @@ return (
     <Route path="materias" element={<Materias />} />
     <Route path="ayuda" element={<FAQ />} />
     </Route>
+   </Route>
   </Routes>
-  )*/
+  )
 }
 export default App

@@ -40,6 +40,7 @@ function FormularioA({ onAlumnoCreado, alumnoEditar, onCancelar }){
                 ? `${API_ALUMNOS}/${alumnoEditar.legajo}`
                 : API_ALUMNOS
         try {
+            
             const respuesta = await fetch(url, {
                 method: editando ? "PUT" : "POST",
                 headers: {"Content-Type":"application/json"},
