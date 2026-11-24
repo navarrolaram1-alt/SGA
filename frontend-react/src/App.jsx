@@ -12,12 +12,6 @@ function App()
 {
 
 return (
-<Login />
-)
-function App()
-{
-
-return (
    <Routes>
     <Route path= "/login" element={<Login/>}/>
     <Route element={<RutaProtegida/>}>
